@@ -389,3 +389,10 @@ tags
 
 # End of https://www.toptal.com/developers/gitignore/api/node,react,visualstudiocode,vim,reactnative
 
+node_modules
+build
+coverage
+.vscode
+.DS_STORE
+.env
+tmp
