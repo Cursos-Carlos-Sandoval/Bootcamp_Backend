@@ -40,7 +40,7 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
         host: Env.get('MYSQL_HOST'),
         port: Env.get('MYSQL_PORT'),
         user: Env.get('MYSQL_USER'),
-        password: Env.get('MYSQL_PASSWORD', ''),
+        password: Env.get('MYSQL_PASSWORD', 'password'),
         database: Env.get('MYSQL_DB_NAME'),
       },
       healthCheck: false,
