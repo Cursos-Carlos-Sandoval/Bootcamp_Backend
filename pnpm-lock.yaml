@@ -8,6 +8,7 @@ specifiers:
   '@japa/core': 7.3.0
   '@japa/preset-adonis': 1.2.0
   '@japa/runner': 2.2.2
+  '@types/luxon': 3.2.0
   '@types/proxy-addr': 2.0.0
   '@types/source-map-support': 0.5.6
   adonis-preset-ts: 2.1.0
@@ -45,6 +46,7 @@ devDependencies:
   '@adonisjs/assembler': 5.9.5_@adonisjs+core@5.9.0
   '@japa/preset-adonis': 1.2.0_jdq4mnbsu6fps6nhexbcvjhv3y
   '@japa/runner': 2.2.2
+  '@types/luxon': 3.2.0
   '@types/proxy-addr': 2.0.0
   '@types/source-map-support': 0.5.6
   adonis-preset-ts: 2.1.0
