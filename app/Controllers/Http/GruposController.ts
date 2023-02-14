@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Grupo from '../../Models/Grupo'
+import Utils from '../Utils'
 
 export default class GruposController {
   public async setRegistrarGrupo({ request, response }: HttpContextContract) {
@@ -25,6 +26,6 @@ export default class GruposController {
       .where({ codigo_grupo: codigo_grupo })
       .count('*')
       .from('grupos')
-    return parseInt(total[0]['count(*)'])
+    return Utils.getAttributeFromDB(total)
   }
 }

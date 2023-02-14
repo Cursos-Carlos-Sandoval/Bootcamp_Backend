@@ -2,6 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Grupo from '../../Models/Grupo'
 import Usuario from '../../Models/Usuario'
 import UsuarioGrupo from '../../Models/UsuarioGrupo'
+import Utils from '../Utils'
 
 export default class GrupoUsuariosController {
   public async setRegistrarUsuarioGrupo({ request, response }: HttpContextContract) {
@@ -40,14 +41,14 @@ export default class GrupoUsuariosController {
       .where({ codigo_grupo: codigo_grupo })
       .count('*')
       .from('grupos')
-    let cantidadDatosGrupos = parseInt(totalGrupos[0]['count(*)'])
+    let cantidadDatosGrupos = Utils.getAttributeFromDB(totalGrupos)
 
     if (cantidadDatosGrupos !== 0) {
       let totalUsuarios = await Usuario.query()
         .where({ codigo_usuario: codigo_usuario })
         .count('*')
         .from('usuarios')
-      let cantidadDatosUsuarios = parseInt(totalUsuarios[0]['count(*)'])
+      let cantidadDatosUsuarios = Utils.getAttributeFromDB(totalUsuarios)
 
       if (cantidadDatosUsuarios !== 0) return 0
       else return 2 // Si el metodo retorna 2, el codigo de usuario no existe

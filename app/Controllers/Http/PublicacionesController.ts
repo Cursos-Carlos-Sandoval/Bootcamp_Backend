@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Publicacione from '../../Models/Publicacione'
+import Utils from '../Utils'
 
 export default class PublicacionesController {
   public async setRegistroPublicacion({ request, response }: HttpContextContract) {
@@ -33,6 +34,6 @@ export default class PublicacionesController {
       .where({ codigo_publicacion: codigo_publicacion })
       .count('*')
       .from('publicaciones')
-    return parseInt(total[0]['count(*)'])
+    return Utils.getAttributeFromDB(total)
   }
 }

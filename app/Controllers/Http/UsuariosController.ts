@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Usuario from '../../Models/Usuario'
+import Utils from '../Utils'
 
 export default class UsuariosController {
   public async getListarUsuarios(): Promise<Usuario[]> {
@@ -48,10 +49,10 @@ export default class UsuariosController {
   }
 
   private async getValidarUsuarioExistente(codigo_usuario: Number): Promise<Number> {
-    const total = await await Usuario.query()
+    const total = await Usuario.query()
       .where({ codigo_usuario: codigo_usuario })
       .count('*')
       .from('usuarios')
-    return parseInt(total[0]['count(*)'])
+    return Utils.getAttributeFromDB(total)
   }
 }

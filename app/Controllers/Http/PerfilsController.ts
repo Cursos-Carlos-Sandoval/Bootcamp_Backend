@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Perfil from '../../Models/Perfil'
+import Utils from '../Utils'
 
 export default class PerfilsController {
   public async setRegistrarPerfil({ request, response }: HttpContextContract) {
@@ -29,6 +30,6 @@ export default class PerfilsController {
       .where({ codigo_perfil: codigo_perfil })
       .count('*')
       .from('perfils')
-    return parseInt(total[0]['count(*)'])
+    return Utils.getAttributeFromDB(total)
   }
 }
