@@ -36,4 +36,4 @@ Route.group(() => {
   Route.post('/registro-publicacion', 'PublicacionesController.setRegistroPublicacion')
   Route.post('/registro-grupo', 'GruposController.setRegistrarGrupo')
   Route.post('/registro-usuario-grupo', 'GrupoUsuariosController.setRegistrarUsuarioGrupo')
-}).prefix('/alcaldia')
+}).prefix('/api')

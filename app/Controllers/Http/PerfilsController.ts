@@ -6,9 +6,9 @@ export default class PerfilsController {
     try {
       const dataPerfil = request.only([
         'codigo_perfil',
-        'codigo_usuario',
         'nombre_perfil',
         'fecha_creacion',
+        'codigo_usuario',
       ])
       const codigoPerfil = dataPerfil.codigo_perfil
       const perfilExistente: Number = await this.getValidarPerfilExistente(codigoPerfil)
