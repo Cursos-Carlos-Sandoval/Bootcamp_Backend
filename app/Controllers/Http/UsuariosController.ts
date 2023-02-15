@@ -55,4 +55,34 @@ export default class UsuariosController {
       .from('usuarios')
     return Utils.getAttributeFromDB(total)
   }
+
+  public async buscarPorId({ request }: HttpContextContract) {
+    const id = request.param('id')
+    const user = await Usuario.find(id)
+    return user
+  }
+
+  public async actualizarUsuario({ request, response }: HttpContextContract) {
+    const id = request.param('id')
+    const user = request.all()
+    await Usuario.query().where('codigo_usuario', id).update({
+      nombre_usuario: user.nombre_usuario,
+      contrasena: user.constrasena,
+      email: user.email,
+      telefono: user.telefono,
+    })
+    response.status(200).json({ msg: 'Registro actualizado con exito' })
+  }
+
+  public async eliminarUsuario({ request, response }: HttpContextContract) {
+    const id = request.param('id')
+    await Usuario.query().where('codigo_usuario', id).delete()
+    response.status(200).json({ msg: 'Registro eliminado con exito' })
+  }
+
+  public async filtroPorNombre({ request, response }: HttpContextContract) {
+    const { search } = request.all()
+    const users = await Usuario.query().where('nombre_usuario', 'like', `${search}%`)
+    response.status(200).json({ msg: 'Resultados', users: users })
+  }
 }

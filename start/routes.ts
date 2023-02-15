@@ -30,10 +30,16 @@ Route.group(() => {
   Route.get('/listar-perfil', 'UsuariosController.getListarUsuariosYPerfil')
   Route.get('/listar-publicaciones', 'UsuariosController.getListarUsuariosYPublicacion')
   Route.get('listar-usuarios-grupos', 'UsuariosController.getListarUsuariosGrupos')
+  Route.get('/buscar-id/:id', 'UsuariosController.buscarPorId')
 
   Route.post('/registro-usuarios', 'UsuariosController.setRegistrarUsuarios')
   Route.post('/registro-perfil', 'PerfilsController.setRegistrarPerfil')
   Route.post('/registro-publicacion', 'PublicacionesController.setRegistroPublicacion')
   Route.post('/registro-grupo', 'GruposController.setRegistrarGrupo')
   Route.post('/registro-usuario-grupo', 'GrupoUsuariosController.setRegistrarUsuarioGrupo')
+  Route.post('/buscar-nombre', 'UsuariosController.filtroPorNombre')
+
+  Route.put('/actualizar/:id', 'UsuariosController.actualizarUsuario')
+
+  Route.delete('/eliminar/:id', 'UsuariosController.eliminarUsuario')
 }).prefix('/api')
